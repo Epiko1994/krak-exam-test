@@ -1,12 +1,11 @@
 package facades;
 
+import entities.Person;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
-/**
- *
- * Rename Class to a relevant name Add add relevant facade methods
- */
 public class FacadeExample {
 
     private static FacadeExample instance;
@@ -14,13 +13,7 @@ public class FacadeExample {
     
     //Private Constructor to ensure Singleton
     private FacadeExample() {}
-    
-    
-    /**
-     * 
-     * @param _emf
-     * @return an instance of this facade class.
-     */
+
     public static FacadeExample getFacadeExample(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;
@@ -42,7 +35,17 @@ public class FacadeExample {
         }finally{  
             em.close();
         }
-        
+    }
+
+    public List<Person> getAllPersons() {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Person> tq = em.createQuery("SELECT p FROM Person p", Person.class);
+            List<Person> persons = tq.getResultList();
+            return persons;
+        } finally {
+            em.close();
+        }
     }
 
 }

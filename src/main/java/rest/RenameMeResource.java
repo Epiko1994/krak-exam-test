@@ -2,6 +2,7 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import entities.Person;
 import utils.EMF_Creator;
 import facades.FacadeExample;
 import javax.persistence.EntityManagerFactory;
@@ -9,6 +10,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 //Todo Remove or change relevant parts before ACTUAL use
 @Path("person")
@@ -31,5 +33,13 @@ public class RenameMeResource {
     public String getPersonCount() {
         long count = FACADE.getPersonCount();
         return "{\"count\":"+count+"}";
+    }
+
+    @Path("all")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getAllPersons() {
+        List<Person> persons = FACADE.getAllPersons();
+        return GSON.toJson(persons);
     }
 }
