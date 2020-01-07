@@ -34,11 +34,11 @@ public class FacadeExample {
     }
     
     //TODO Remove/Change this before use
-    public long getRenameMeCount(){
+    public long getPersonCount(){
         EntityManager em = emf.createEntityManager();
         try{
-            long renameMeCount = (long)em.createQuery("SELECT COUNT(r) FROM User r").getSingleResult();
-            return renameMeCount;
+            long PersonCount = (long)em.createQuery("SELECT COUNT(p) FROM Person p").getSingleResult();
+            return PersonCount;
         }finally{  
             em.close();
         }
