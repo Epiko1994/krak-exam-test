@@ -15,10 +15,6 @@ import java.util.concurrent.Future;
 import webscrabers.ApiScrape;
 import webscrabers.ApiScrapeCallable;
 
-/**
- *
- * @author Jeppe
- */
 public class ApiScrapeFacade {
     
     
