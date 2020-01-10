@@ -34,9 +34,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import utils.EMF_Creator;
 
-/**
- * @author lam@cphbusiness.dk
- */
 @Path("info")
 public class DemoResource {
 
@@ -87,13 +84,7 @@ public class DemoResource {
         String thisuser = securityContext.getUserPrincipal().getName();
         return "{\"message\": \"Hello to (admin) User: " + thisuser + "\"}";
     }
-    
-    
-    
-    
-    
-    
-    
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
    // @Path("starwars/{childID}")
@@ -133,8 +124,7 @@ public class DemoResource {
     scan.close(); 
     return jsonStr;
   }
-   
-    
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("swapidata")
